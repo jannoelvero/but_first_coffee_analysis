@@ -1,0 +1,19 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.env
+data/cleaned/*
+outputs/figures/*
+outputs/tables/*
+
+# Tableau temporary and backup files
+.~*
+*.twbr
+
+# macOS temporary files
+._*
+
+# Python environments
+.venv/
+venv/

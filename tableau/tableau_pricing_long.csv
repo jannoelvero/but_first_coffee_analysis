@@ -1,0 +1,16 @@
+brand,product_family,representative_price_php,source_observations,price_rank
+"But First, Coffee",Americano,130.0,1,1.0
+"But First, Coffee",Cafe Latte,150.0,1,1.0
+"But First, Coffee",Caramel Macchiato,130.0,3,1.0
+"But First, Coffee",Matcha Latte,130.0,3,1.0
+"But First, Coffee",Mocha,150.0,1,1.0
+Starbucks,Americano,175.0,2,2.0
+Starbucks,Cafe Latte,185.0,2,2.0
+Starbucks,Caramel Macchiato,210.0,2,2.0
+Starbucks,Matcha Latte,190.0,2,2.0
+Starbucks,Mocha,205.0,2,2.0
+The Coffee Bean & Tea Leaf,Americano,185.0,2,3.0
+The Coffee Bean & Tea Leaf,Cafe Latte,187.5,2,3.0
+The Coffee Bean & Tea Leaf,Caramel Macchiato,245.0,4,3.0
+The Coffee Bean & Tea Leaf,Matcha Latte,225.0,2,3.0
+The Coffee Bean & Tea Leaf,Mocha,220.0,5,3.0

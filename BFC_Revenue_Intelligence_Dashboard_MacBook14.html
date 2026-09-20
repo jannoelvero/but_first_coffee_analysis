@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>But First, Coffee — Competitive Revenue Intelligence</title>
+<style>
+:root{
+  --ink:#202a33; --muted:#66727d; --paper:#f4f7fa; --card:#ffffff; --line:#d9e1e8;
+  --bfc:#2f6f9f; --bfc2:#73a6c9; --sb:#2f963f; --cbtl:#b06b9a; --accent:#2f6f9f;
+  --good:#2f7d57; --shadow:0 10px 28px rgba(38,72,99,.10);
+}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#edf3f8 0,#f8fafc 42%,#eef3f7 100%);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.dashboard{max-width:1440px;margin:auto;padding:14px 20px 12px;min-height:100vh}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:10px;min-height:150px;padding:20px 24px;border-radius:22px;position:relative;overflow:hidden;background-image:linear-gradient(90deg,rgba(18,42,62,.92) 0%,rgba(32,72,103,.76) 48%,rgba(32,72,103,.28) 100%),url("https://static.goto-where.com/242145-albums-1.jpg");background-size:cover;background-position:center 47%;box-shadow:var(--shadow)}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d7e9f5;font-weight:800;margin-bottom:6px}
+h1{font-size:clamp(25px,2.2vw,36px);line-height:1.05;margin:0;font-weight:750;letter-spacing:-.03em}header h1{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.24)}.sub{color:var(--muted);font-size:14px;margin-top:8px}header .sub{color:rgba(255,255,255,.86)}
+.header-actions{display:flex;gap:8px;align-items:center}header .btn{background:rgba(255,255,255,.92);border-color:rgba(255,255,255,.7)}.btn{border:1px solid var(--line);background:rgba(255,253,250,.88);color:var(--ink);padding:9px 12px;border-radius:11px;font-weight:650;font-size:12px;cursor:pointer}.btn:hover{border-color:#9fb9cd;background:white}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:9px}.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 12px 9px;box-shadow:var(--shadow);min-height:72px;position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--bfc2)}.kpi.scenario:before{background:var(--accent)}.kpi .value{font-size:23px;font-weight:780;letter-spacing:-.03em}.kpi .label{font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.18}.kpi .tag{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#7c8b98;margin-top:4px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.panel{background:rgba(255,253,250,.96);border:1px solid var(--line);border-radius:18px;padding:11px 13px 10px;box-shadow:var(--shadow);min-height:250px;overflow:hidden}.panel h2{font-size:15px;margin:0;font-weight:760;letter-spacing:-.015em}.panel .desc{font-size:11.5px;color:var(--muted);margin:3px 0 6px}.chart{width:100%;height:205px;position:relative;overflow:hidden}.chart svg{width:100%;height:100%;overflow:hidden;display:block}.axis{stroke:#cbd6df;stroke-width:1}.gridline{stroke:#e8eef3;stroke-width:1}.tick{fill:#72808b;font-size:10px}.rowlabel{fill:#53616d;font-size:10.5px}.price-label{fill:#2f3b45;font-size:10px;font-weight:650}.legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:2px 0 0;font-size:10.5px;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px}.legend span{display:flex;align-items:center}
+.scenario-controls{display:flex;gap:10px;align-items:center;margin:6px 0 2px}.scenario-controls label{font-size:10.5px;color:var(--muted);font-weight:650}.scenario-controls input[type=range]{width:155px;accent-color:var(--accent)}.pill{font-size:11px;font-weight:800;background:#e8f1f8;color:#245a82;padding:5px 8px;border-radius:999px;white-space:nowrap}.callout{font-size:11px;background:#eef6fb;border:1px solid #cbddea;padding:7px 9px;border-radius:10px;color:#315a78;margin-top:4px}.customer-layout{display:grid;grid-template-columns:1fr 165px;gap:9px;height:205px}.bars{padding-top:2px}.barrow{display:grid;grid-template-columns:155px 1fr 44px;align-items:center;gap:7px;margin:5px 0}.barlabel{font-size:10.5px;color:#5f554f;text-align:right}.track{height:12px;background:#e8eef3;border-radius:99px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--bfc),var(--bfc2));border-radius:99px}.barval{font-size:10.5px;font-weight:700;color:#554b45}.customer-note{background:#eef3f7;border-radius:14px;padding:9px;font-size:10px;color:var(--muted);line-height:1.45;align-self:start}.customer-note strong{display:block;color:var(--ink);font-size:21px;line-height:1;margin-bottom:5px}.customer-note .mini{font-size:9.5px;margin-top:9px;border-top:1px solid #d5e0e8;padding-top:8px}
+.opps{display:grid;grid-template-columns:1fr;gap:5px;margin-top:5px}.opp{display:grid;grid-template-columns:165px 190px 1fr;gap:10px;align-items:center;border:1px solid #dce5ec;border-radius:11px;padding:6px 8px;background:#fff;cursor:pointer;transition:.15s}.opp:hover,.opp.active{border-color:#78a6c7;transform:translateY(-1px);box-shadow:0 6px 14px rgba(47,111,159,.10)}.oppname{font-size:11px;font-weight:800}.oppcomp{font-size:10px;color:var(--bfc);font-weight:700}.oppmetric{font-size:10px;color:var(--muted)}.opp:focus{outline:2px solid rgba(47,111,159,.28);outline-offset:2px}
+.drawer{display:none;margin-top:5px;background:#eef4f8;border-radius:12px;padding:7px 9px;font-size:10px;line-height:1.45;color:#61564f}.drawer.show{display:block}.drawer b{color:var(--ink)}
+.footer{margin-top:8px;border-top:1px solid #d4dfe7;padding:7px 4px 0;display:flex;justify-content:space-between;gap:16px;color:#7c716a;font-size:9.5px;line-height:1.4}.footer strong{color:#51463f}.status{white-space:nowrap;color:#6b5d55}.status:before{content:"";display:inline-block;width:7px;height:7px;background:var(--good);border-radius:50%;margin-right:5px}
+.tooltip{position:fixed;z-index:50;pointer-events:none;background:#17364d;color:#fff;padding:6px 8px;border-radius:9px;font-size:10.5px;line-height:1.4;box-shadow:0 10px 30px rgba(0,0,0,.2);opacity:0;transform:translate(-50%,-110%);transition:opacity .08s;max-width:240px}.tooltip.show{opacity:1}
+.modal{position:fixed;inset:0;background:rgba(20,43,60,.52);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}.modal.show{display:flex}.modal-card{max-width:700px;background:#ffffff;border-radius:18px;padding:22px;box-shadow:0 24px 70px rgba(0,0,0,.25)}.modal-card h3{margin:0 0 10px}.modal-card p,.modal-card li{font-size:12px;line-height:1.55;color:#5d6b76}.modal-card ul{padding-left:18px}
+@media(max-width:1050px){.kpis{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}.customer-layout{grid-template-columns:1fr 170px}.panel{min-height:300px}}
+@media(max-width:650px){.dashboard{padding:14px}header{min-height:210px;padding:22px;background-position:center}.kpis{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start;flex-direction:column}.customer-layout{grid-template-columns:1fr}.customer-note{display:none}.opp{grid-template-columns:1fr}.footer{flex-direction:column}.chart{height:230px}}
+
+@media (min-width:1060px) and (max-height:900px){
+  .dashboard{padding-top:10px;padding-bottom:8px}
+  header{min-height:128px;padding:16px 22px;margin-bottom:8px}
+  h1{font-size:28px}.sub{font-size:12px;margin-top:5px}
+  .kpi{min-height:66px;padding:8px 11px 7px}.kpi .value{font-size:21px}.kpi .label{font-size:10.5px}.kpi .tag{font-size:8px}
+  .panel{min-height:230px;padding:9px 11px 8px}.panel h2{font-size:14px}.panel .desc{font-size:10.5px;margin-bottom:4px}
+  .chart{height:185px}.customer-layout{height:185px}.barrow{margin:4px 0}.opp{padding:5px 7px}.footer{font-size:8.5px;margin-top:6px;padding-top:5px}
+}
+@media print{body{background:#fff}.dashboard{max-width:none;padding:10px}.btn{display:none}.panel,.kpi{box-shadow:none}.modal{display:none!important}}
+</style>
+</head>
+<body>
+<div class="dashboard">
+<header>
+  <div><div class="eyebrow">Revenue Management Case</div><h1>But First, Coffee: Competitive Revenue Intelligence</h1><div class="sub">Pricing position • Promotion economics • Customer experience • Revenue opportunities</div></div>
+  <div class="header-actions"><button class="btn" id="methodBtn">Methodology</button><button class="btn" onclick="window.print()">Print / PDF</button></div>
+</header>
+<section class="kpis">
+  <div class="kpi"><div class="value">₱130</div><div class="label">BFC Beverage Median Price</div><div class="tag">Descriptive</div></div>
+  <div class="kpi"><div class="value">28.2%</div><div class="label">Below Starbucks</div><div class="tag">Mean matched-family gap</div></div>
+  <div class="kpi"><div class="value">34.1%</div><div class="label">Below CBTL</div><div class="tag">Mean matched-family gap</div></div>
+  <div class="kpi"><div class="value">90%</div><div class="label">Observed Promotion Coverage</div><div class="tag">45 of 50 observations</div></div>
+  <div class="kpi"><div class="value">20%</div><div class="label">Observed Promotion Discount</div><div class="tag">Collected snapshot</div></div>
+  <div class="kpi scenario"><div class="value" id="neutralKpi">25%</div><div class="label">Required Volume Lift</div><div class="tag" id="neutralTag">20% discount scenario</div></div>
+</section>
+<section class="grid">
+  <article class="panel"><h2>Matched Product-Family Pricing</h2><div class="desc">Representative prices across five directly matched beverage families</div><div class="legend"><span><i class="dot" style="background:var(--bfc)"></i>But First, Coffee</span><span><i class="dot" style="background:var(--sb)"></i>Starbucks</span><span><i class="dot" style="background:var(--cbtl)"></i>CBTL</span></div><div id="priceChart" class="chart"></div></article>
+  <article class="panel"><h2>Discount: Revenue–Volume Trade-off</h2><div class="desc">Scenario analysis — revenue neutrality does not imply profit neutrality</div><div class="scenario-controls"><label>Discount</label><input id="discountSlider" type="range" min="5" max="30" step="5" value="20"><span class="pill" id="discountPill">20%</span></div><div id="promoChart" class="chart" style="height:165px"></div><div class="callout" id="promoCallout">At a 20% discount, unit volume must rise 25.0% to maintain revenue.</div></article>
+  <article class="panel"><h2>BFC Customer Experience — Review Mention Prevalence</h2><div class="desc">104 collected BFC reviews • multi-theme coding possible • not a dissatisfaction rate</div><div class="customer-layout"><div id="customerBars" class="bars"></div><aside class="customer-note"><strong>50.0%</strong>of collected BFC reviews mentioned <b>Product Quality</b>.<div class="mini">This is mention prevalence across reviews regardless of polarity. It is not a complaint rate or causal estimate.</div></aside></div></article>
+  <article class="panel"><h2>Revenue Opportunity Framework</h2><div class="desc">External evidence → management test → decision metric. Click an opportunity for detail.</div><div id="opportunities" class="opps"></div><div id="oppDrawer" class="drawer"></div></article>
+</section>
+<footer class="footer"><div><strong>Methodology.</strong> External competitive evidence and collected review data. Pricing inference uses five directly matched beverage families; Friedman Q(2)=10.00, p=.0067, Kendall’s W=1.00. Exact pairwise Wilcoxon tests were not significant after adjustment (n=5 matched families). Customer-experience percentages are review mention prevalence. Promotion and basket analyses are scenarios, not observed revenue outcomes. Actual profitability requires internal transaction and cost data.</div><div class="status">Validated analytical pipeline</div></footer>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<div class="modal" id="methodModal"><div class="modal-card"><h3>Evidence & Methodology</h3><p>This dashboard preserves the analytical limits established in the Jupyter/Tableau workflow.</p><ul><li><b>Pricing:</b> five directly matched beverage families reduce product-mix confounding. BFC had the lowest representative price in all five.</li><li><b>Inference:</b> Friedman Q(2)=10.00, p=.0067; Kendall’s W=1.00 indicates complete rank consistency across the five matched families. Pairwise exact Wilcoxon tests were not significant after Bonferroni adjustment.</li><li><b>Promotions:</b> 45 of 50 observed BFC menu observations carried a 20% promotional price in the collected snapshot. This is not evidence of a permanent promotion policy.</li><li><b>Customer experience:</b> 104 BFC reviews are external descriptive evidence; prevalence means the percentage mentioning a dimension, not dissatisfaction.</li><li><b>Profitability:</b> no actual contribution margin, ROI, or profit is estimated without POS, product-cost, promotion-history and channel economics data.</li></ul><button class="btn" id="closeModal">Close</button></div></div>
+<script>
+const C={bfc:'#2f6f9f',sb:'#2f963f',cbtl:'#b06b9a',grid:'#e8eef3',axis:'#cbd6df',muted:'#72808b',ink:'#2f3b45',accent:'#2f6f9f'};
+const prices=[
+ {family:'Americano',BFC:130,Starbucks:175,CBTL:185},
+ {family:'Cafe Latte',BFC:150,Starbucks:185,CBTL:187.5},
+ {family:'Caramel Macchiato',BFC:130,Starbucks:210,CBTL:245},
+ {family:'Matcha Latte',BFC:130,Starbucks:190,CBTL:225},
+ {family:'Mocha',BFC:150,Starbucks:205,CBTL:220}
+];
+const dims=[['Product Quality',50.00],['Packaging',19.23],['Value & Portion',19.23],['Order Execution',15.38],['Availability & Consistency',13.46],['Customization & Add-ons',12.50],['Service & Delivery',7.69],['Loyalty Experience',3.85]];
+const opps=[
+ {name:'Selective Pricing',comp:'Average Transaction Value',metric:'Revenue and contribution after volume response',evidence:'BFC was lowest-priced across all 5 matched product families.',hyp:'Selected products may have room for controlled price testing while preserving affordability.',test:'Run controlled SKU/branch price tests and measure elasticity, mix and retention.',status:'Statistically supported positioning; test required.'},
+ {name:'Promotion Optimization',comp:'Transactions + Average Transaction Value',metric:'Incremental contribution margin',evidence:'45/50 observed BFC menu observations carried a 20% promotional price.',hyp:'Some promotions may surrender more revenue than the incremental demand they generate.',test:'Measure incremental units and contribution margin versus a valid control/baseline.',status:'Strong external signal; internal economics required.'},
+ {name:'Basket Building',comp:'Average Transaction Value',metric:'ATV + contribution margin per transaction',evidence:'Collected BFC menu sample was 90% beverage, 6% food and 4% add-on.',hyp:'Food, add-ons, upgrades and bundles may increase average transaction value.',test:'Test attachment offers and bundles against control groups.',status:'Scenario-supported hypothesis.'},
+ {name:'Operational Execution',comp:'Transactions + Retention',metric:'Revenue leakage + repeat-purchase impact',evidence:'External reviews frequently mention product quality, packaging, value and order execution.',hyp:'Execution improvements may protect conversion, service recovery cost and repeat purchase.',test:'Connect errors, refunds, remakes and complaints to transaction and retention outcomes.',status:'Descriptive signal; internal quantification required.'},
+ {name:'Commercial Access',comp:'Transactions',metric:'Incremental contribution per channel',evidence:'Competitor evidence includes multi-platform delivery, loyalty, gifting and digital/e-commerce capabilities.',hyp:'Selected access capabilities may create incremental transactions.',test:'Pilot selected channels and measure incremental revenue net of commission and operating cost.',status:'Competitive capability hypothesis.'}
+];
+const tt=document.getElementById('tooltip');
+function tip(el,html){el.addEventListener('mousemove',e=>{tt.innerHTML=html;tt.style.left=e.clientX+'px';tt.style.top=e.clientY+'px';tt.classList.add('show')});el.addEventListener('mouseleave',()=>tt.classList.remove('show'))}
+function svgEl(tag,attrs={}){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e}
+function renderPrices(){
+ const host=document.getElementById('priceChart');host.innerHTML='';
+ const w=700,h=255,m={l:148,r:42,t:18,b:34};
+ const svg=svgEl('svg',{viewBox:`0 0 ${w} ${h}`,'preserveAspectRatio':'xMidYMid meet'});
+ const x=v=>m.l+(v-100)/(260-100)*(w-m.l-m.r);
+ const y=i=>m.t+20+i*40;
+ [100,120,140,160,180,200,220,240,260].forEach(v=>{
+   svg.appendChild(svgEl('line',{x1:x(v),x2:x(v),y1:m.t,y2:h-m.b,class:'gridline'}));
+   const tx=svgEl('text',{x:x(v),y:h-11,'text-anchor':'middle',class:'tick'});tx.textContent='₱'+v;svg.appendChild(tx)
+ });
+ prices.forEach((r,i)=>{
+   const cy=y(i);
+   const lab=svgEl('text',{x:m.l-14,y:cy+4,'text-anchor':'end',class:'rowlabel'});lab.textContent=r.family;svg.appendChild(lab);
+   const vals=[
+     {k:'BFC',col:C.bfc,name:'But First, Coffee'},
+     {k:'Starbucks',col:C.sb,name:'Starbucks'},
+     {k:'CBTL',col:C.cbtl,name:'CBTL'}
+   ].sort((a,b)=>r[a.k]-r[b.k]);
+   vals.forEach((d,j)=>{
+     const cx=x(r[d.k]);
+     const c=svgEl('circle',{cx,cy,r:6.5,fill:d.col,stroke:'#fff','stroke-width':1.7,style:'cursor:pointer'});svg.appendChild(c);
+     // Stagger labels when nearby values would collide (e.g. Café Latte 185 vs 187.5).
+     const prev=j?vals[j-1]:null;
+     const closePrev=prev && Math.abs(x(r[d.k])-x(r[prev.k]))<52;
+     const next=j<vals.length-1?vals[j+1]:null;
+     const closeNext=next && Math.abs(x(r[next.k])-x(r[d.k]))<52;
+     let ly=cy+4, anchor='start', lx=cx+10;
+     if(closePrev){ly=cy+15;}
+     else if(closeNext){ly=cy-9;}
+     if(cx>w-m.r-48){anchor='end';lx=cx-10;}
+     const t=svgEl('text',{x:lx,y:ly,'text-anchor':anchor,class:'price-label'});
+     t.textContent='₱'+(r[d.k]%1?r[d.k].toFixed(1):r[d.k]);svg.appendChild(t);
+     tip(c,`<b>${d.name}</b><br>${r.family}<br>Representative price: ₱${r[d.k].toFixed(r[d.k]%1?1:0)}<br><span style="opacity:.8">Directly matched product family</span>`)
+   })
+ });
+ host.appendChild(svg)
+}
+function renderPromo(discount){const host=document.getElementById('promoChart');host.innerHTML='';const w=640,h=205,m={l:42,r:20,t:8,b:30};const svg=svgEl('svg',{viewBox:`0 0 ${w} ${h}`});const neutral=discount/(100-discount)*100;const vols=[0,10,20,neutral,30,40,50].filter((v,i,a)=>v<=50&&a.indexOf(v)===i).sort((a,b)=>a-b);const rev=v=>((1-discount/100)*(1+v/100)-1)*100;const x=v=>m.l+v/50*(w-m.l-m.r);const y=v=>m.t+(25-v)/50*(h-m.t-m.b);
+ [-20,-10,0,10,20].forEach(v=>{svg.appendChild(svgEl('line',{x1:m.l,x2:w-m.r,y1:y(v),y2:y(v),class:v===0?'axis':'gridline'}));const tx=svgEl('text',{x:m.l-7,y:y(v)+4,'text-anchor':'end',class:'tick'});tx.textContent=v+'%';svg.appendChild(tx)});[0,10,20,30,40,50].forEach(v=>{const tx=svgEl('text',{x:x(v),y:h-9,'text-anchor':'middle',class:'tick'});tx.textContent=v+'%';svg.appendChild(tx)});
+ const pts=vols.map(v=>[x(v),y(rev(v)),v,rev(v)]);const pl=svgEl('polyline',{points:pts.map(p=>p[0]+','+p[1]).join(' '),fill:'none',stroke:C.bfc,'stroke-width':3,'stroke-linejoin':'round'});svg.appendChild(pl);pts.forEach(p=>{const isN=Math.abs(p[2]-neutral)<.001;const c=svgEl('circle',{cx:p[0],cy:p[1],r:isN?6:4.5,fill:isN?C.accent:C.bfc,stroke:'#fff','stroke-width':1.5,style:'cursor:pointer'});svg.appendChild(c);tip(c,`<b>${discount}% discount scenario</b><br>Unit volume change: ${p[2].toFixed(1)}%<br>Revenue change: ${p[3].toFixed(1)}%${isN?'<br><b>Revenue neutral</b>':''}`)});
+ const label=svgEl('text',{x:x(neutral)+9,y:y(0)-10,class:'price-label'});label.textContent=`${neutral.toFixed(1)}% volume lift`;svg.appendChild(label);const zero=svgEl('text',{x:m.l+3,y:y(0)-5,class:'tick'});zero.textContent='Revenue neutral';svg.appendChild(zero);host.appendChild(svg);
+ document.getElementById('discountPill').textContent=discount+'%';document.getElementById('neutralKpi').textContent=neutral.toFixed(1).replace('.0','')+'%';document.getElementById('neutralTag').textContent=discount+'% discount scenario';document.getElementById('promoCallout').textContent=`At a ${discount}% discount, unit volume must rise ${neutral.toFixed(1)}% to maintain revenue.`}
+function renderBars(){const host=document.getElementById('customerBars');host.innerHTML='';dims.forEach(([n,v])=>{const row=document.createElement('div');row.className='barrow';row.innerHTML=`<div class="barlabel">${n}</div><div class="track"><div class="bar" style="width:${v/50*100}%"></div></div><div class="barval">${v.toFixed(1)}%</div>`;host.appendChild(row);tip(row,`<b>${n}</b><br>${v.toFixed(2)}% of 104 collected BFC reviews mentioned this management dimension.<br><span style="opacity:.8">Mention prevalence — not dissatisfaction rate.</span>`)})}
+function renderOpps(){const host=document.getElementById('opportunities'),drawer=document.getElementById('oppDrawer');opps.forEach((o,i)=>{const d=document.createElement('div');d.className='opp';d.tabIndex=0;d.setAttribute('aria-label',`${o.name}: ${o.metric}`);d.innerHTML=`<div class="oppname">${o.name}</div><div class="oppcomp">${o.comp}</div><div class="oppmetric">${o.metric}</div>`;const tooltipHtml=`<b>${o.name}</b><br><b>Revenue component:</b> ${o.comp}<br><b>Decision metric:</b> ${o.metric}<br><b>External evidence:</b> ${o.evidence}<br><b>Management test:</b> ${o.test}<br><span style="opacity:.82">${o.status}</span>`;tip(d,tooltipHtml);d.addEventListener('focus',()=>{const r=d.getBoundingClientRect();tt.innerHTML=tooltipHtml;tt.style.left=(r.left+r.width/2)+'px';tt.style.top=r.top+'px';tt.classList.add('show')});d.addEventListener('blur',()=>tt.classList.remove('show'));d.onclick=()=>{document.querySelectorAll('.opp').forEach(x=>x.classList.remove('active'));d.classList.add('active');drawer.classList.add('show');drawer.innerHTML=`<b>External evidence:</b> ${o.evidence}<br><b>Commercial hypothesis:</b> ${o.hyp}<br><b>Management test:</b> ${o.test}<br><b>Evidence status:</b> ${o.status}<br><b>Profitability:</b> Actual profitability not estimated.`};host.appendChild(d)})}
+renderPrices();renderPromo(20);renderBars();renderOpps();
+document.getElementById('discountSlider').addEventListener('input',e=>renderPromo(+e.target.value));
+const modal=document.getElementById('methodModal');document.getElementById('methodBtn').onclick=()=>modal.classList.add('show');document.getElementById('closeModal').onclick=()=>modal.classList.remove('show');modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+</script>
+</body></html>

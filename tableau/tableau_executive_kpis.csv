@@ -1,0 +1,7 @@
+kpi,value,unit,display_direction,evidence_type
+BFC Beverage Median Price,130.0,PHP,Neutral,Descriptive
+Matched Price Gap vs Starbucks,-28.22733167790934,Percent,Lower,Matched-price descriptive
+Matched Price Gap vs CBTL,-34.14178185606757,Percent,Lower,Matched-price descriptive
+Observed Promotion Coverage,90.0,Percent,Observed,Observed snapshot
+Observed Promotion Discount,20.0,Percent,Observed,Observed snapshot
+Volume Lift for 20% Discount Neutrality,25.0,Percent,Required,Scenario calculation

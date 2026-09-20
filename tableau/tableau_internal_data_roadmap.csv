@@ -1,0 +1,7 @@
+dataset,minimum_fields,revenue_analysis_enabled,purpose
+POS Transactions,"transaction_id, date, branch, SKU, quantity, selling_price, discount","ATV, items/transaction, mix, elasticity, branch productivity",Internal data required to move from external opportunity analysis to measured revenue and profitability analysis
+Product Cost,"SKU, ingredient cost, packaging cost, variable cost",Contribution margin and menu engineering,Internal data required to move from external opportunity analysis to measured revenue and profitability analysis
+Promotion History,"SKU, campaign, start/end date, discount, exposure",Incrementality and promotion ROI,Internal data required to move from external opportunity analysis to measured revenue and profitability analysis
+Order Operations,"transaction_id, error, remake, refund, cancellation, fulfillment time",Revenue leakage and operational cost,Internal data required to move from external opportunity analysis to measured revenue and profitability analysis
+Customer / Loyalty,"customer_id, transactions, frequency, basket, loyalty activity","Retention, frequency and customer lifetime value",Internal data required to move from external opportunity analysis to measured revenue and profitability analysis
+Channel Performance,"channel, transactions, revenue, commission, discount, fulfillment cost",Incremental channel economics,Internal data required to move from external opportunity analysis to measured revenue and profitability analysis

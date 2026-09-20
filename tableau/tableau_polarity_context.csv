@@ -1,0 +1,5 @@
+polarity,review_count,share_of_all_reviews_pct,total_reviews,classification_coverage_pct,method,interpretation_limit
+Unclear,135,47.87,282,52.13,Conservative rule-based polarity,Not a population-level customer satisfaction measure
+Negative,109,38.65,282,52.13,Conservative rule-based polarity,Not a population-level customer satisfaction measure
+Positive,35,12.41,282,52.13,Conservative rule-based polarity,Not a population-level customer satisfaction measure
+Mixed,3,1.06,282,52.13,Conservative rule-based polarity,Not a population-level customer satisfaction measure

@@ -1,0 +1,7 @@
+methodological_item,definition
+Review Base,104 collected BFC reviews for BFC-specific prevalence analysis
+Theme Prevalence,Percentage of BFC reviews mentioning the theme or dimension
+Multi-theme Reviews,A single review may contribute to multiple themes
+Polarity Classification,Conservative rule-based classification with partial coverage
+Causality,Theme evidence is descriptive and does not establish causality
+Financial Impact,Lost revenue or contribution margin cannot be quantified externally

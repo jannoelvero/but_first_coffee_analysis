@@ -1,0 +1,2 @@
+analysis,test,test_statistic,degrees_of_freedom,p_value,kendall_w,matched_families,interpretation
+Matched Competitive Pricing,Friedman Test,10.0,2,0.006738,1.0,5,Systematic overall price-rank difference across the three brands; BFC ranked lowest in all five matched product families.

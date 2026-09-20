@@ -1,0 +1,8 @@
+brand,product_class,menu_items,mean_regular_price_php,median_regular_price_php,min_regular_price_php,max_regular_price_php
+"But First, Coffee",Add-on,2,30.0,30.0,30,30
+"But First, Coffee",Beverage,45,141.9111111111111,130.0,69,219
+"But First, Coffee",Food,3,91.66666666666667,75.0,60,140
+Starbucks,Beverage,38,196.8421052631579,195.0,140,220
+Starbucks,Food,12,217.08333333333334,195.0,135,315
+The Coffee Bean & Tea Leaf,Beverage,39,223.97435897435898,225.0,150,270
+The Coffee Bean & Tea Leaf,Food,11,159.0909090909091,145.0,100,295
